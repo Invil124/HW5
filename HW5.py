@@ -18,7 +18,10 @@ def download_document(file_name, document_url):
 
 def read_orders_from_file(filename):
     with open(filename, 'r', encoding='utf-8') as f:
-        return [line.strip().split('@@@') for line in f if line.strip()]
+        return [
+      [item.strip() for item in line.strip().split('@@@')]
+      for line in f if line.strip()
+    ]
 
 
 def count_products_and_pairs(orders):
